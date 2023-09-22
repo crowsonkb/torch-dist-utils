@@ -97,7 +97,7 @@ def main():
     success = False
     try:
         dist.barrier()
-    except ValueError:
+    except (RuntimeError, ValueError):
         success = True
     assert success, "dist.barrier() should fail after cleanup_distributed()"
 
