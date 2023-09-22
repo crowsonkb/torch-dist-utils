@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Test dist_utils.py."""
+"""Test torch_dist_utils.py."""
 
 import argparse
 from functools import partial
@@ -9,7 +9,7 @@ import os
 import torch
 import torch.distributed as dist
 
-import dist_utils as du
+from . import torch_dist_utils as du
 
 printf0 = partial(du.print0, flush=True)
 

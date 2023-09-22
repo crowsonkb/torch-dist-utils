@@ -1,33 +1,33 @@
-# dist-utils
+# torch-dist-utils
 
 Utilities for PyTorch distributed.
 
-[Documentation](https://crowsonkb.github.io/dist-utils/)
+[Documentation](https://crowsonkb.github.io/torch-dist-utils/)
 
 ## Test cases
 
 Test cases should run on CPU and GPU, with and without torchrun.
 
 ```sh
-python -m dist_utils.test --device-type cpu
+python -m torch_dist_utils.test --device-type cpu
 
-python -m dist_utils.test --device-type cuda
+python -m torch_dist_utils.test --device-type cuda
 
-CUDA_VISIBLE_DEVICES="" torchrun --nproc-per-node 4 -m dist_utils.test --device-type cpu
+CUDA_VISIBLE_DEVICES="" torchrun --nproc-per-node 4 -m torch_dist_utils.test --device-type cpu
 
-torchrun --nproc-per-node gpu -m dist_utils.test --device-type cuda
+torchrun --nproc-per-node gpu -m torch_dist_utils.test --device-type cuda
 ```
 
 Test cases should also run on multiple nodes. To simulate this on a single machine, run:
 
 ```sh
-CUDA_VISIBLE_DEVICES="" torchrun --master-addr localhost --master-port 25500 --nnodes 2 --nproc-per-node 4 --node-rank 0 -m dist_utils.test --device-type cpu
+CUDA_VISIBLE_DEVICES="" torchrun --master-addr localhost --master-port 25500 --nnodes 2 --nproc-per-node 4 --node-rank 0 -m torch_dist_utils.test --device-type cpu
 ```
 
 in one terminal, and
 
 ```sh
-CUDA_VISIBLE_DEVICES="" torchrun --master-addr localhost --master-port 25500 --nnodes 2 --nproc-per-node 4 --node-rank 1 -m dist_utils.test --device-type cpu
+CUDA_VISIBLE_DEVICES="" torchrun --master-addr localhost --master-port 25500 --nnodes 2 --nproc-per-node 4 --node-rank 1 -m torch_dist_utils.test --device-type cpu
 ```
 
 in another.

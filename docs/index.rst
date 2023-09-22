@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to dist-utils's documentation!
-======================================
+Welcome to torch-dist-utils's documentation!
+============================================
 
 Utilities for PyTorch distributed.
 
@@ -12,12 +12,12 @@ Utilities for PyTorch distributed.
    :maxdepth: 2
    :caption: Contents:
 
-Module dist_utils
------------------
+Module torch_dist_utils
+-----------------------
 
-Before using ``dist_utils`` functions, you must either call :func:`dist_utils.init_distributed()` or initialize the default process group yourself. :func:`dist_utils.init_distributed()` can be called even if you did not start the script with ``torchrun``: if you did not, it will assume it is the only process and create a process group with a single member.
+Before using ``torch_dist_utils`` functions, you must either call :func:`torch_dist_utils.init_distributed()` or initialize the default process group yourself. :func:`torch_dist_utils.init_distributed()` can be called even if you did not start the script with ``torchrun``: if you did not, it will assume it is the only process and create a process group with a single member.
 
-.. automodule:: dist_utils
+.. automodule:: torch_dist_utils
    :members:
    :undoc-members:
 

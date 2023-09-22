@@ -1,4 +1,6 @@
-from .dist_utils import (
+"""Utilities for PyTorch distributed."""
+
+from .torch_dist_utils import (
     get_local_group,
     get_device,
     init_distributed,
@@ -17,7 +19,7 @@ from .dist_utils import (
     broadcast_tensors,
 )
 
-del dist_utils
+del torch_dist_utils
 
 
 __all__ = [

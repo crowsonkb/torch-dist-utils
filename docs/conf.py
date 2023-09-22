@@ -11,13 +11,13 @@ import sys
 base_path = Path(__file__).parent.parent.resolve()
 sys.path.insert(0, str(base_path))
 
-import dist_utils as du
+import torch_dist_utils as du
 
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "dist-utils"
+project = "torch-dist-utils"
 copyright = "2023, Katherine Crowson"
 author = "Katherine Crowson"
 version = release = du.__version__
