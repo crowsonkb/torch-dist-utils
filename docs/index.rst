@@ -6,6 +6,8 @@
 Welcome to dist-utils's documentation!
 ======================================
 
+Utilities for PyTorch distributed.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

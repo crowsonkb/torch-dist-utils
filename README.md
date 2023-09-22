@@ -2,7 +2,7 @@
 
 Utilities for PyTorch distributed.
 
-TODO: Add more details.
+[Documentation](https://crowsonkb.github.io/dist-utils/)
 
 ## Test cases
 
