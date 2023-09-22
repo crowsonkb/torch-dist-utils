@@ -5,9 +5,15 @@ from collections import defaultdict
 from contextlib import contextmanager
 from functools import wraps
 import os
+from typing import Any, Callable, Iterable, List, Optional
 
 import torch
 import torch.distributed as dist
+
+
+# Type hints
+
+Group = Optional[dist.ProcessGroup]
 
 
 # State
@@ -16,13 +22,19 @@ all_groups = []
 local_group = None
 
 
-def get_local_group():
-    """Get the group containing only the local processes."""
+def get_local_group() -> dist.ProcessGroup:
+    """Get the process group containing only the local processes.
+
+    :returns: The process group containing only the local processes.
+    """
     return local_group
 
 
-def get_device():
-    """Get the device of the current process."""
+def get_device() -> torch.device:
+    """Get the device of the current process.
+
+    :returns: The device of the current process.
+    """
     if torch.cuda.is_available():
         return torch.device("cuda", dist.get_rank(local_group))
     return torch.device("cpu")
@@ -32,8 +44,8 @@ def get_device():
 
 
 def init_distributed():
-    """Initialize distributed communication. If the process is not launched with
-    torchrun/torchelastic, then assume it is the only process."""
+    """Initialize distributed communication. If the process is not launched with ``torchrun``,
+    then assume it is the only process."""
     global local_group
     backend = None if torch.cuda.is_available() else "gloo"
     if dist.is_torchelastic_launched():
@@ -59,7 +71,7 @@ def init_distributed():
 
 
 def cleanup_distributed():
-    """Cleanup distributed communication."""
+    """Clean up distributed communication."""
     global local_group
     atexit.unregister(cleanup_distributed)
     for group in reversed(all_groups):
@@ -72,8 +84,11 @@ def cleanup_distributed():
 
 
 @contextmanager
-def do_in_order(group=None):
-    """A context manager that ensures that all processes execute the block in order."""
+def do_in_order(group: Group = None):
+    """A context manager that ensures that all processes execute the block in order.
+
+    :param group: The process group. If ``None``, use the default group.
+    """
     rank = dist.get_rank(group)
     world_size = dist.get_world_size(group)
     dist.barrier(group)
@@ -90,8 +105,12 @@ def do_in_local_order():
         yield
 
 
-def on_rank_0(group=None):
-    """A decorator that ensures that only process 0 executes the function."""
+def on_rank_0(group: Group = None) -> Callable:
+    """A decorator that ensures that only process 0 executes the function.
+
+    :param group: The process group. If ``None``, use the default group.
+    :returns: The decorated function.
+    """
 
     def decorator(fn):
         @wraps(fn)
@@ -104,8 +123,11 @@ def on_rank_0(group=None):
     return decorator
 
 
-def on_local_rank_0():
-    """A decorator that ensures that only the local process 0 executes the function."""
+def on_local_rank_0() -> Callable:
+    """A decorator that ensures that only the local process 0 executes the function.
+
+    :returns: The decorated function.
+    """
 
     def decorator(fn):
         @wraps(fn)
@@ -119,30 +141,49 @@ def on_local_rank_0():
 
 
 print0 = on_rank_0()(print)
+print0.__doc__ = """A version of ``print()`` that only prints on process 0."""
 printl0 = on_local_rank_0()(print)
-
+printl0.__doc__ = """A version of ``print()`` that only prints on local process 0."""
 
 # Transferring objects
 
 
-def all_gather_object(obj, group=None):
+def all_gather_object(obj: Any, group: Group = None) -> List[Any]:
     """Gather an object from each process and return a list of gathered objects in all
-    processes."""
+    processes.
+
+    :param obj: The object to gather.
+    :param group: The process group. If ``None``, use the default group.
+    :returns: A list of gathered objects.
+    """
     object_list = [None] * dist.get_world_size(group)
     dist.all_gather_object(object_list, obj, group=group)
     return object_list
 
 
-def broadcast_object(obj=None, src=0, group=None):
-    """Broadcast an object from the source process and return the object in all processes."""
+def broadcast_object(obj: Optional[Any] = None, src: int = 0, group: Group = None) -> Any:
+    """Broadcast an object from the source process and return the object in all processes.
+
+    :param obj: The object to broadcast. Ignored in processes other than ``src``.
+    :param src: The source process.
+    :param group: The process group. If ``None``, use the default group.
+    :returns: The object broadcasted from the source process.
+    """
     object_list = [obj]
     dist.broadcast_object_list(object_list, src=src, group=group)
     return object_list[0]
 
 
-def gather_object(obj, dst=0, group=None):
+def gather_object(obj: Any, dst: int = 0, group: Group = None) -> Optional[List[Any]]:
     """Gather an object from each process and return a list of gathered objects in the
-    destination process."""
+    destination process.
+
+    :param obj: The object to gather.
+    :param dst: The destination process.
+    :param group: The process group. If ``None``, use the default group.
+    :returns: A list of gathered objects in the destination process, ``None`` in all other
+        processes.
+    """
     rank = dist.get_rank(group)
     object_list = [None] * dist.get_world_size(group) if rank == dst else None
     dist.gather_object(obj, object_list, dst=dst, group=group)
@@ -150,9 +191,15 @@ def gather_object(obj, dst=0, group=None):
         return object_list
 
 
-def scatter_objects(objs=None, src=0, group=None):
+def scatter_objects(objs: Optional[List[Any]] = None, src: int = 0, group: Group = None) -> Any:
     """Scatter a list of objects from the source process and return each object in each
-    process."""
+    process.
+
+    :param objs: The list of objects to scatter. Ignored in processes other than ``src``.
+    :param src: The source process.
+    :param group: The process group. If ``None``, use the default group.
+    :returns: The object scattered to the current process.
+    """
     object_list = [None]
     dist.scatter_object_list(object_list, objs, src=src, group=group)
     return object_list[0]
@@ -161,9 +208,13 @@ def scatter_objects(objs=None, src=0, group=None):
 # Transferring tensors
 
 
-def all_gather_into_new(tensor, group=None):
+def all_gather_into_new(tensor: torch.Tensor, group: Group = None) -> List[torch.Tensor]:
     """Gather a tensor from each process and return a list of gathered tensors in all
     processes. Tensors can have different shapes. Tensors must be all on CPU or all on GPU.
+
+    :param tensor: The tensor to gather.
+    :param group: The process group. If ``None``, use the default group.
+    :returns: A list of gathered tensors.
     """
     shapes = all_gather_object(tensor.shape, group=group)
     if tensor.device.type == "cuda":
@@ -186,11 +237,19 @@ def all_gather_into_new(tensor, group=None):
     return tensors
 
 
-def broadcast_tensors(tensors, src=0, group=None):
+def broadcast_tensors(tensors: Iterable[torch.Tensor], src: int = 0, group: Group = None):
     """Broadcast an iterable of tensors from the given source process to all other processes.
 
-    For instance, `broadcast_tensors(model.parameters())` will synchronize the model
-    parameters in all processes to the versions on rank 0."""
+    To synchronize a model's parameters in all processes to the versions in process 0:
+
+    .. code-block:: python
+
+        broadcast_tensors(model.parameters())
+
+    :param tensors: The tensors to broadcast.
+    :param src: The source process.
+    :param group: The process group. If ``None``, use the default group.
+    """
     handles = [dist.broadcast(tensor, src=src, group=group, async_op=True) for tensor in tensors]
     for handle in handles:
         handle.wait()
