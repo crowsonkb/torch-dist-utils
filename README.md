@@ -2,7 +2,21 @@
 
 Utilities for PyTorch distributed.
 
-[Documentation](https://crowsonkb.github.io/torch-dist-utils/)
+[API documentation](https://crowsonkb.github.io/torch-dist-utils/)
+
+## Example
+
+There is an example script to train a classifier on CIFAR-10 using DDP in `examples/train_classifier.py`. It can be run on CPU or one GPU with:
+
+```sh
+python examples/train_classifier.py
+```
+
+and on multiple GPUs with:
+
+```sh
+torchrun --nproc-per-node gpu examples/train_classifier.py
+```
 
 ## Slurm wrapper for torchrun
 
