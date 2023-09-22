@@ -109,7 +109,7 @@ def on_rank_0(group: Group = None) -> Callable:
     """A decorator that ensures that only process 0 executes the function.
 
     :param group: The process group. If ``None``, use the default group.
-    :returns: The decorated function.
+    :returns: A decorator.
     """
 
     def decorator(fn):
@@ -126,7 +126,7 @@ def on_rank_0(group: Group = None) -> Callable:
 def on_local_rank_0() -> Callable:
     """A decorator that ensures that only the local process 0 executes the function.
 
-    :returns: The decorated function.
+    :returns: A decorator.
     """
 
     def decorator(fn):
