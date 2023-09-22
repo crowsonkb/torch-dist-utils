@@ -4,6 +4,10 @@ Utilities for PyTorch distributed.
 
 [Documentation](https://crowsonkb.github.io/torch-dist-utils/)
 
+## Slurm wrapper for torchrun
+
+`torchrun_slurm` is a wrapper for `torchrun` that can be used with Slurm. It is a drop-in replacement for `torchrun`. It will automatically set the `--nnodes`, `--node-rank`, and `--master-addr` arguments from `$SLURM_NPROCS`, `$SLURM_PROCID`, and the first node in `$SLURM_JOB_NODELIST` respectively. It also sets `--nproc-per-node` to the number of GPUs on the node (you can override it by setting it explicitly).
+
 ## Test cases
 
 Test cases should run on CPU and GPU, with and without torchrun.
@@ -31,7 +35,3 @@ CUDA_VISIBLE_DEVICES="" torchrun --master-addr localhost --master-port 25500 --n
 ```
 
 in another.
-
-## Slurm wrapper for torchrun
-
-`torchrun_slurm` is a wrapper for torchrun that can be used with Slurm. It is a drop-in replacement for torchrun. It will automatically set the `--nnodes`, `--node-rank`, and `--master-addr` arguments from `$SLURM_NPROCS`, `$SLURM_PROCID`, and the first node in `$SLURM_JOB_NODELIST` respectively. It also sets `--nproc-per-node` to the number of GPUs on the node (you can override it by setting it explicitly).
