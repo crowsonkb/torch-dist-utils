@@ -106,7 +106,16 @@ def on_rank_0(group=None):
 
 def on_local_rank_0():
     """A decorator that ensures that only the local process 0 executes the function."""
-    return on_rank_0(local_group)
+
+    def decorator(fn):
+        @wraps(fn)
+        def wrapped(*args, **kwargs):
+            if dist.get_rank(local_group) == 0:
+                return fn(*args, **kwargs)
+
+        return wrapped
+
+    return decorator
 
 
 print0 = on_rank_0()(print)
