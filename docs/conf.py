@@ -11,6 +11,8 @@ import sys
 base_path = Path(__file__).parent.parent.resolve()
 sys.path.insert(0, str(base_path))
 
+import dist_utils as du
+
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -18,6 +20,7 @@ sys.path.insert(0, str(base_path))
 project = "dist-utils"
 copyright = "2023, Katherine Crowson"
 author = "Katherine Crowson"
+version = release = du.__version__
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
