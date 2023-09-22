@@ -66,6 +66,12 @@ def linkcode_resolve(domain, info):
         obj = getattr(mod, info["fullname"])
 
     try:
+        while True:
+            obj = obj.__wrapped__
+    except AttributeError:
+        pass
+
+    try:
         file = inspect.getsourcefile(obj)
         lines = inspect.getsourcelines(obj)
     except TypeError:
