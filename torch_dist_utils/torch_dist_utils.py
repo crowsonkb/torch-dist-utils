@@ -53,6 +53,8 @@ def init_distributed():
         all_groups.append(None)
         group_rank = int(os.environ["GROUP_RANK"])
         local_rank = int(os.environ["LOCAL_RANK"])
+        if torch.cuda.is_available():
+            torch.cuda.set_device(local_rank)
         rank_list = all_gather_object((group_rank, local_rank))
         groups = defaultdict(list)
         for global_rank, (group_rank, local_rank) in enumerate(rank_list):
@@ -60,8 +62,6 @@ def init_distributed():
         ranks_per_group = [[rank[1] for rank in sorted(group)] for group in groups.values()]
         local_group, new_groups = dist.new_subgroups_by_enumeration(ranks_per_group)
         all_groups.extend(new_groups)
-        if torch.cuda.is_available():
-            torch.cuda.set_device(get_device())
     else:
         dist.init_process_group(backend, world_size=1, rank=0, store=dist.HashStore())
         all_groups.append(None)
