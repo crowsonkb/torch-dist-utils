@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to torch-dist-utils’s documentation! &mdash; torch-dist-utils 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            torch-dist-utils
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to torch-dist-utils’s documentation!</a><ul>
+<li><a class="reference internal" href="#module-torch-dist-utils">Module torch_dist_utils</a><ul>
+<li><a class="reference internal" href="#torch_dist_utils.get_local_group"><code class="docutils literal notranslate"><span class="pre">get_local_group()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.get_device"><code class="docutils literal notranslate"><span class="pre">get_device()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.init_distributed"><code class="docutils literal notranslate"><span class="pre">init_distributed()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.cleanup_distributed"><code class="docutils literal notranslate"><span class="pre">cleanup_distributed()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.do_in_order"><code class="docutils literal notranslate"><span class="pre">do_in_order()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.do_in_local_order"><code class="docutils literal notranslate"><span class="pre">do_in_local_order()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.on_rank_0"><code class="docutils literal notranslate"><span class="pre">on_rank_0()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.on_local_rank_0"><code class="docutils literal notranslate"><span class="pre">on_local_rank_0()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.print0"><code class="docutils literal notranslate"><span class="pre">print0()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.printl0"><code class="docutils literal notranslate"><span class="pre">printl0()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.all_gather_object"><code class="docutils literal notranslate"><span class="pre">all_gather_object()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.broadcast_object"><code class="docutils literal notranslate"><span class="pre">broadcast_object()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.gather_object"><code class="docutils literal notranslate"><span class="pre">gather_object()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.scatter_objects"><code class="docutils literal notranslate"><span class="pre">scatter_objects()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.all_gather_into_new"><code class="docutils literal notranslate"><span class="pre">all_gather_into_new()</span></code></a></li>
+<li><a class="reference internal" href="#torch_dist_utils.broadcast_tensors"><code class="docutils literal notranslate"><span class="pre">broadcast_tensors()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">torch-dist-utils</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to torch-dist-utils’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-torch-dist-utils-s-documentation">
+<h1>Welcome to torch-dist-utils’s documentation!<a class="headerlink" href="#welcome-to-torch-dist-utils-s-documentation" title="Link to this heading"></a></h1>
+<p>Utilities for PyTorch distributed.</p>
+<div class="toctree-wrapper compound">
+</div>
+<section id="module-torch-dist-utils">
+<h2>Module torch_dist_utils<a class="headerlink" href="#module-torch-dist-utils" title="Link to this heading"></a></h2>
+<p>Before using <code class="docutils literal notranslate"><span class="pre">torch_dist_utils</span></code> functions, you must either call <a class="reference internal" href="#torch_dist_utils.init_distributed" title="torch_dist_utils.init_distributed"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch_dist_utils.init_distributed()</span></code></a> or initialize the default process group yourself. <a class="reference internal" href="#torch_dist_utils.init_distributed" title="torch_dist_utils.init_distributed"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch_dist_utils.init_distributed()</span></code></a> can be called even if you did not start the script with <code class="docutils literal notranslate"><span class="pre">torchrun</span></code>: if you did not, it will assume it is the only process and create a process group with a single member.</p>
+<p id="module-torch_dist_utils">Utilities for PyTorch distributed.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.get_local_group">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">get_local_group</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L25-L30"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.get_local_group" title="Link to this definition"></a></dt>
+<dd><p>Get the process group containing only the local processes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The process group containing only the local processes.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ProcessGroup</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.get_device">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">get_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L33-L40"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.get_device" title="Link to this definition"></a></dt>
+<dd><p>Get the device of the current process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The device of the current process.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>device</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.init_distributed">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">init_distributed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L46-L70"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.init_distributed" title="Link to this definition"></a></dt>
+<dd><p>Initialize distributed communication. If the process is not launched with <code class="docutils literal notranslate"><span class="pre">torchrun</span></code>,
+then assume it is the only process.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.cleanup_distributed">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">cleanup_distributed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L73-L80"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.cleanup_distributed" title="Link to this definition"></a></dt>
+<dd><p>Clean up distributed communication.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.do_in_order">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">do_in_order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L86-L98"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.do_in_order" title="Link to this definition"></a></dt>
+<dd><p>A context manager that ensures that all processes execute the block in order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group</strong> (<em>ProcessGroup</em><em> | </em><em>None</em>) – The process group. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, use the default group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.do_in_local_order">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">do_in_local_order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L101-L105"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.do_in_local_order" title="Link to this definition"></a></dt>
+<dd><p>A context manager that ensures that all local processes execute the block in order.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.on_rank_0">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">on_rank_0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L108-L123"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.on_rank_0" title="Link to this definition"></a></dt>
+<dd><p>A decorator that ensures that only process 0 executes the function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group</strong> (<em>ProcessGroup</em><em> | </em><em>None</em>) – The process group. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, use the default group.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A decorator.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Callable</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.on_local_rank_0">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">on_local_rank_0</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L126-L140"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.on_local_rank_0" title="Link to this definition"></a></dt>
+<dd><p>A decorator that ensures that only the local process 0 executes the function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A decorator.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Callable</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.print0">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">print0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flush</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torch_dist_utils.print0" title="Link to this definition"></a></dt>
+<dd><p>A version of <code class="docutils literal notranslate"><span class="pre">print()</span></code> that only prints on process 0.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.printl0">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">printl0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flush</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torch_dist_utils.printl0" title="Link to this definition"></a></dt>
+<dd><p>A version of <code class="docutils literal notranslate"><span class="pre">print()</span></code> that only prints on local process 0.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.all_gather_object">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">all_gather_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L151-L161"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.all_gather_object" title="Link to this definition"></a></dt>
+<dd><p>Gather an object from each process and return a list of gathered objects in all
+processes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>Any</em>) – The object to gather.</p></li>
+<li><p><strong>group</strong> (<em>ProcessGroup</em><em> | </em><em>None</em>) – The process group. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, use the default group.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of gathered objects.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>List</em>[<em>Any</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.broadcast_object">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">broadcast_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L164-L174"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.broadcast_object" title="Link to this definition"></a></dt>
+<dd><p>Broadcast an object from the source process and return the object in all processes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>Any</em><em> | </em><em>None</em>) – The object to broadcast. Ignored in processes other than <code class="docutils literal notranslate"><span class="pre">src</span></code>.</p></li>
+<li><p><strong>src</strong> (<em>int</em>) – The source process.</p></li>
+<li><p><strong>group</strong> (<em>ProcessGroup</em><em> | </em><em>None</em>) – The process group. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, use the default group.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The object broadcasted from the source process.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Any</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.gather_object">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">gather_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L177-L191"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.gather_object" title="Link to this definition"></a></dt>
+<dd><p>Gather an object from each process and return a list of gathered objects in the
+destination process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>Any</em>) – The object to gather.</p></li>
+<li><p><strong>dst</strong> (<em>int</em>) – The destination process.</p></li>
+<li><p><strong>group</strong> (<em>ProcessGroup</em><em> | </em><em>None</em>) – The process group. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, use the default group.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of gathered objects in the destination process, <code class="docutils literal notranslate"><span class="pre">None</span></code> in all other
+processes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>List</em>[<em>Any</em>] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.scatter_objects">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">scatter_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L194-L205"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.scatter_objects" title="Link to this definition"></a></dt>
+<dd><p>Scatter a list of objects from the source process and return each object in each
+process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>objs</strong> (<em>List</em><em>[</em><em>Any</em><em>] </em><em>| </em><em>None</em>) – The list of objects to scatter. Ignored in processes other than <code class="docutils literal notranslate"><span class="pre">src</span></code>.</p></li>
+<li><p><strong>src</strong> (<em>int</em>) – The source process.</p></li>
+<li><p><strong>group</strong> (<em>ProcessGroup</em><em> | </em><em>None</em>) – The process group. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, use the default group.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The object scattered to the current process.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Any</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.all_gather_into_new">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">all_gather_into_new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L211-L237"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.all_gather_into_new" title="Link to this definition"></a></dt>
+<dd><p>Gather a tensor from each process and return a list of gathered tensors in all
+processes. Tensors can have different shapes. Tensors must be all on CPU or all on GPU.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tensor</strong> (<em>Tensor</em>) – The tensor to gather.</p></li>
+<li><p><strong>group</strong> (<em>ProcessGroup</em><em> | </em><em>None</em>) – The process group. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, use the default group.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of gathered tensors.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>List</em>[<em>Tensor</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="torch_dist_utils.broadcast_tensors">
+<span class="sig-prename descclassname"><span class="pre">torch_dist_utils.</span></span><span class="sig-name descname"><span class="pre">broadcast_tensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/crowsonkb/dist-utils/blob/main/torch_dist_utils/torch_dist_utils.py#L240-L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#torch_dist_utils.broadcast_tensors" title="Link to this definition"></a></dt>
+<dd><p>Broadcast an iterable of tensors from the given source process to all other processes.</p>
+<p>To synchronize a model’s parameters in all processes to the versions in process 0:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">broadcast_tensors</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tensors</strong> (<em>Iterable</em><em>[</em><em>Tensor</em><em>]</em>) – The tensors to broadcast.</p></li>
+<li><p><strong>src</strong> (<em>int</em>) – The source process.</p></li>
+<li><p><strong>group</strong> (<em>ProcessGroup</em><em> | </em><em>None</em>) – The process group. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, use the default group.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Katherine Crowson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
